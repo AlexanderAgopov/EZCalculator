@@ -1,4 +1,3 @@
-package ezcalculator;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,6 +17,7 @@ import javax.swing.JTextField;
  * @author a
  *
  */
+@SuppressWarnings("PMD.CyclomaticComplexity")
 public class EZCalculator {
 
 	private static String expression = "";
@@ -65,15 +65,8 @@ public class EZCalculator {
 
 			}
 		});
-
-		cF1.fill = GridBagConstraints.HORIZONTAL;
-		cF1.ipady = 20;
-		cF1.weightx = 0.0;
-		cF1.insets = new Insets(6, 4, 4, 2);
 		cF1.gridwidth = 6;
-		cF1.gridx = 0;
-		cF1.gridy = 0;
-		pane.add(expressionField, cF1);
+		positionTextField(pane, expressionField, cF1, 0, 20, 0.0, new Insets(6, 4, 4, 2), 0, 0);
 
 		GridBagConstraints cF2 = new GridBagConstraints();
 		JTextField resultField = new JTextField();
@@ -85,493 +78,212 @@ public class EZCalculator {
 				e.consume(); // ignore event
 			}
 		});
-		cF2.fill = GridBagConstraints.HORIZONTAL;
-		cF2.ipady = 20;
-		cF2.weightx = 0.0;
-		cF2.insets = new Insets(2, 4, 4, 2);
 		cF2.gridwidth = 6;
-		cF2.gridx = 0;
-		cF2.gridy = 1;
-		pane.add(resultField, cF2);
+		positionTextField(pane, resultField, cF2, 0, 20, 0.0, new Insets(2, 4, 4, 2), 0, 1);
 
 		// Create all buttons and position them in the frame
 		GridBagConstraints cB7 = new GridBagConstraints();
 		JButton b7 = new JButton("7");
-		cB7.fill = GridBagConstraints.HORIZONTAL;
-		cB7.ipadx = 10;
-		cB7.ipady = 10;
-		cB7.weightx = 0.5;
-		cB7.insets = insetsLeft;
-		cB7.gridx = 0;
-		cB7.gridy = 2;
-		pane.add(b7, cB7);
+		positionButton(pane, b7, cB7, 10, 10, 0.5, insetsLeft, 0, 2);
 
 		GridBagConstraints cB8 = new GridBagConstraints();
 		JButton b8 = new JButton("8");
-		cB8.fill = GridBagConstraints.HORIZONTAL;
-		cB8.ipadx = 10;
-		cB8.ipady = 10;
-		cB8.weightx = 0.5;
-		cB8.insets = insetsMiddle;
-		cB8.gridx = 1;
-		cB8.gridy = 2;
-		pane.add(b8, cB8);
+		positionButton(pane, b8, cB8, 10, 10, 0.5, insetsMiddle, 1, 2);
 
 		GridBagConstraints cB9 = new GridBagConstraints();
 		JButton b9 = new JButton("9");
-		cB9.fill = GridBagConstraints.HORIZONTAL;
-		cB9.ipadx = 10;
-		cB9.ipady = 10;
-		cB9.weightx = 0.5;
-		cB9.insets = insetsMiddle;
-		cB9.gridx = 2;
-		cB9.gridy = 2;
-		pane.add(b9, cB9);
+		positionButton(pane, b9, cB9, 10, 10, 0.5, insetsMiddle, 2, 2);
 
 		GridBagConstraints cBDivide = new GridBagConstraints();
 		JButton bDivide = new JButton("/");
-		cBDivide.fill = GridBagConstraints.HORIZONTAL;
-		cBDivide.ipadx = 15;
-		cBDivide.ipady = 10;
-		cBDivide.weightx = 0.5;
-		cBDivide.insets = insetsMiddle;
-		cBDivide.gridx = 3;
-		cBDivide.gridy = 2;
-		pane.add(bDivide, cBDivide);
+		positionButton(pane, bDivide, cBDivide, 15, 10, 0.5, insetsMiddle, 3, 2);
 
 		GridBagConstraints cBBackspace = new GridBagConstraints();
 		JButton bBackspace = new JButton("\u2b05");
-		cBBackspace.fill = GridBagConstraints.HORIZONTAL;
-		cBBackspace.ipady = 10;
-		cBBackspace.weightx = 0.5;
-		cBBackspace.insets = insetsMiddle;
-		cBBackspace.gridx = 4;
-		cBBackspace.gridy = 2;
-		pane.add(bBackspace, cBBackspace);
+		positionButton(pane, bBackspace, cBBackspace, 0, 10, 0.5, insetsMiddle, 4, 2);
 
 		GridBagConstraints cBCancel = new GridBagConstraints();
 		JButton bCancel = new JButton("C");
-		cBCancel.fill = GridBagConstraints.HORIZONTAL;
-		cBCancel.ipadx = 10;
-		cBCancel.ipady = 10;
-		cBCancel.weightx = 0.5;
-		cBCancel.insets = insetsRight;
-		cBCancel.gridx = 5;
-		cBCancel.gridy = 2;
-		pane.add(bCancel, cBCancel);
+		positionButton(pane, bCancel, cBCancel, 10, 10, 0.5, insetsRight, 5, 2);
 
 		GridBagConstraints cB4 = new GridBagConstraints();
 		JButton b4 = new JButton("4");
-		cB4.fill = GridBagConstraints.HORIZONTAL;
-		cB4.ipadx = 10;
-		cB4.ipady = 10;
-		cB4.weightx = 0.5;
-		cB4.insets = insetsLeft;
-		cB4.gridx = 0;
-		cB4.gridy = 3;
-		pane.add(b4, cB4);
+		positionButton(pane, b4, cB4, 10, 10, 0.5, insetsLeft, 0, 3);
 
 		GridBagConstraints cB5 = new GridBagConstraints();
 		JButton b5 = new JButton("5");
-		cB5.fill = GridBagConstraints.HORIZONTAL;
-		cB5.ipadx = 10;
-		cB5.ipady = 10;
-		cB5.weightx = 0.5;
-		cB5.insets = insetsMiddle;
-		cB5.gridx = 1;
-		cB5.gridy = 3;
-		pane.add(b5, cB5);
+		positionButton(pane, b5, cB5, 10, 10, 0.5, insetsMiddle, 1, 3);
 
 		GridBagConstraints cB6 = new GridBagConstraints();
 		JButton b6 = new JButton("6");
-		cB6.fill = GridBagConstraints.HORIZONTAL;
-		cB6.ipadx = 10;
-		cB6.ipady = 10;
-		cB6.weightx = 0.5;
-		cB6.insets = insetsMiddle;
-		cB6.gridx = 2;
-		cB6.gridy = 3;
-		pane.add(b6, cB6);
+		positionButton(pane, b6, cB6, 10, 10, 0.5, insetsMiddle, 2, 3);
 
 		GridBagConstraints cBMultiply = new GridBagConstraints();
 		JButton bMultiply = new JButton("*");
-		cBMultiply.fill = GridBagConstraints.HORIZONTAL;
-		cBMultiply.ipady = 10;
-		cBMultiply.weightx = 0.5;
-		cBMultiply.insets = insetsMiddle;
-		cBMultiply.gridx = 3;
-		cBMultiply.gridy = 3;
-		pane.add(bMultiply, cBMultiply);
+		positionButton(pane, bMultiply, cBMultiply, 0, 10, 0.5, insetsMiddle, 3, 3);
 
 		GridBagConstraints cBFactorial = new GridBagConstraints();
 		JButton bFactorial = new JButton("n!");
-		cBFactorial.fill = GridBagConstraints.HORIZONTAL;
-		cBFactorial.ipady = 10;
-		cBFactorial.weightx = 0.5;
-		cBFactorial.insets = insetsMiddle;
-		cBFactorial.gridx = 4;
-		cBFactorial.gridy = 3;
-		pane.add(bFactorial, cBFactorial);
+		positionButton(pane, bFactorial, cBFactorial, 0, 10, 0.5, insetsMiddle, 4, 3);
 
 		GridBagConstraints cBLogarithm = new GridBagConstraints();
 		JButton bLogarithm = new JButton("log");
-		cBLogarithm.fill = GridBagConstraints.HORIZONTAL;
-		cBLogarithm.ipady = 10;
-		cBLogarithm.weightx = 0.5;
-		cBLogarithm.insets = insetsRight;
-		cBLogarithm.gridx = 5;
-		cBLogarithm.gridy = 3;
-		pane.add(bLogarithm, cBLogarithm);
+		positionButton(pane, bLogarithm, cBLogarithm, 0, 10, 0.5, insetsRight, 5, 3);
 
 		GridBagConstraints cB1 = new GridBagConstraints();
 		JButton b1 = new JButton("1");
-		cB1.fill = GridBagConstraints.HORIZONTAL;
-		cB1.ipadx = 10;
-		cB1.ipady = 10;
-		cB1.weightx = 0.5;
-		cB1.insets = insetsLeft;
-		cB1.gridx = 0;
-		cB1.gridy = 4;
-		pane.add(b1, cB1);
+		positionButton(pane, b1, cB1, 10, 10, 0.5, insetsLeft, 0, 4);
 
 		GridBagConstraints cB2 = new GridBagConstraints();
 		JButton b2 = new JButton("2");
-		cB2.fill = GridBagConstraints.HORIZONTAL;
-		cB2.ipadx = 10;
-		cB2.ipady = 10;
-		cB2.weightx = 0.5;
-		cB2.insets = insetsMiddle;
-		cB2.gridx = 1;
-		cB2.gridy = 4;
-		pane.add(b2, cB2);
+		positionButton(pane, b2, cB2, 10, 10, 0.5, insetsMiddle, 1, 4);
 
 		GridBagConstraints cB3 = new GridBagConstraints();
 		JButton b3 = new JButton("3");
-		cB3.fill = GridBagConstraints.HORIZONTAL;
-		cB3.ipadx = 10;
-		cB3.ipady = 10;
-		cB3.weightx = 0.5;
-		cB3.insets = insetsMiddle;
-		cB3.gridx = 2;
-		cB3.gridy = 4;
-		pane.add(b3, cB3);
+		positionButton(pane, b3, cB3, 10, 10, 0.5, insetsMiddle, 2, 4);
 
 		GridBagConstraints cbSubtract = new GridBagConstraints();
 		JButton bSubtract = new JButton("-");
-		cbSubtract.fill = GridBagConstraints.HORIZONTAL;
-		cbSubtract.ipadx = 10;
-		cbSubtract.ipady = 10;
-		cbSubtract.weightx = 0.5;
-		cbSubtract.insets = insetsMiddle;
-		cbSubtract.gridx = 3;
-		cbSubtract.gridy = 4;
-		pane.add(bSubtract, cbSubtract);
+		positionButton(pane, bSubtract, cbSubtract, 10, 10, 0.5, insetsMiddle, 3, 4);
 
 		GridBagConstraints cbSecondPower = new GridBagConstraints();
 		JButton bSecondPower = new JButton("x\u00B2");
-		cbSecondPower.fill = GridBagConstraints.HORIZONTAL;
-		cbSecondPower.ipady = 10;
-		cbSecondPower.weightx = 0.5;
-		cbSecondPower.insets = insetsMiddle;
-		cbSecondPower.gridx = 4;
-		cbSecondPower.gridy = 4;
-		pane.add(bSecondPower, cbSecondPower);
+		positionButton(pane, bSecondPower, cbSecondPower, 0, 10, 0.5, insetsMiddle, 4, 4);
 
 		GridBagConstraints cBSquareRoot = new GridBagConstraints();
 		JButton bSquareRoot = new JButton("\u221A");
-		cBSquareRoot.fill = GridBagConstraints.HORIZONTAL;
-		cBSquareRoot.ipady = 10;
-		cBSquareRoot.weightx = 0.5;
-		cBSquareRoot.insets = insetsRight;
-		cBSquareRoot.gridx = 5;
-		cBSquareRoot.gridy = 4;
-		pane.add(bSquareRoot, cBSquareRoot);
+		positionButton(pane, bSquareRoot, cBSquareRoot, 0, 10, 0.5, insetsRight, 5, 4);
 
 		GridBagConstraints cB0 = new GridBagConstraints();
 		JButton b0 = new JButton("0");
-		cB0.fill = GridBagConstraints.HORIZONTAL;
-		cB0.ipadx = 10;
-		cB0.ipady = 10;
-		cB0.weightx = 0.5;
-		cB0.insets = new Insets(2, 4, 4, 2);
-		cB0.gridx = 0;
-		cB0.gridy = 5;
-		pane.add(b0, cB0);
+		positionButton(pane, b0, cB0, 10, 10, 0.5, new Insets(2, 4, 4, 2), 0, 5);
 
 		GridBagConstraints cBDot = new GridBagConstraints();
 		JButton bDot = new JButton(".");
-		cBDot.fill = GridBagConstraints.HORIZONTAL;
-		cBDot.ipadx = 10;
-		cBDot.ipady = 10;
-		cBDot.weightx = 0.5;
-		cBDot.insets = insetsBottom;
-		cBDot.gridx = 1;
-		cBDot.gridy = 5;
-		pane.add(bDot, cBDot);
+		positionButton(pane, bDot, cBDot, 10, 10, 0.5, insetsBottom, 1, 5);
 
 		GridBagConstraints cBPercent = new GridBagConstraints();
 		JButton bPercent = new JButton("%");
-		cBPercent.fill = GridBagConstraints.HORIZONTAL;
-		cBPercent.ipadx = 10;
-		cBPercent.ipady = 10;
-		cBPercent.weightx = 0.5;
-		cBPercent.insets = insetsBottom;
-		cBPercent.gridx = 2;
-		cBPercent.gridy = 5;
-		pane.add(bPercent, cBPercent);
+		positionButton(pane, bPercent, cBPercent, 10, 10, 0.5, insetsBottom, 2, 5);
 
 		GridBagConstraints cbAdd = new GridBagConstraints();
 		JButton bAdd = new JButton("+");
-		cbAdd.fill = GridBagConstraints.HORIZONTAL;
-		cbAdd.ipady = 10;
-		cbAdd.weightx = 0.5;
-		cbAdd.insets = insetsBottom;
-		cbAdd.gridx = 3;
-		cbAdd.gridy = 5;
-		pane.add(bAdd, cbAdd);
+		positionButton(pane, bAdd, cbAdd, 0, 10, 0.5, insetsBottom, 3, 5);
 
 		GridBagConstraints cBEquals = new GridBagConstraints();
 		JButton bEquals = new JButton("=");
-		cBEquals.fill = GridBagConstraints.HORIZONTAL;
-		cBEquals.ipady = 10;
-		cBEquals.weightx = 0.5;
-		cBEquals.insets = new Insets(2, 2, 4, 4);
 		cBEquals.gridwidth = 2;
-		cBEquals.gridx = 4;
-		cBEquals.gridy = 5;
-		pane.add(bEquals, cBEquals);
+		positionButton(pane, bEquals, cBEquals, 0, 10, 0.5, new Insets(2, 2, 4, 4), 4, 5);
 
 		// Set button operations
-		b0.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				expression = expression + "0";
-				expressionField.setText(expression);
-			}
-
+		b0.addActionListener((ActionEvent e) -> {
+			printDigit(expressionField, "0");
 		});
 
-		b1.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				expression = expression + "1";
-				expressionField.setText(expression);
-			}
-
+		b1.addActionListener((ActionEvent e) -> {
+			printDigit(expressionField, "1");
 		});
 
-		b2.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				expression = expression + "2";
-				expressionField.setText(expression);
-			}
-
+		b2.addActionListener((ActionEvent e) -> {
+			printDigit(expressionField, "2");
 		});
 
-		b3.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				expression = expression + "3";
-				expressionField.setText(expression);
-			}
-
+		b3.addActionListener((ActionEvent e) -> {
+			printDigit(expressionField, "3");
 		});
 
-		b4.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				expression = expression + "4";
-				expressionField.setText(expression);
-			}
-
+		b4.addActionListener((ActionEvent e) -> {
+			printDigit(expressionField, "4");
 		});
 
-		b5.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				expression = expression + "5";
-				expressionField.setText(expression);
-			}
-
+		b5.addActionListener((ActionEvent e) -> {
+			printDigit(expressionField, "5");
 		});
 
-		b6.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				expression = expression + "6";
-				expressionField.setText(expression);
-			}
-
+		b6.addActionListener((ActionEvent e) -> {
+			printDigit(expressionField, "6");
 		});
 
-		b7.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				expression = expression + "7";
-				expressionField.setText(expression);
-			}
-
+		b7.addActionListener((ActionEvent e) -> {
+			printDigit(expressionField, "7");
 		});
 
-		b8.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				expression = expression + "8";
-				expressionField.setText(expression);
-			}
-
+		b8.addActionListener((ActionEvent e) -> {
+			printDigit(expressionField, "8");
 		});
 
-		b9.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				expression = expression + "9";
-				expressionField.setText(expression);
-			}
-
+		b9.addActionListener((ActionEvent e) -> {
+			printDigit(expressionField, "9");
 		});
 
-		bDot.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				expression = expression + ".";
-				expressionField.setText(expression);
-			}
-
+		bDot.addActionListener((ActionEvent e) -> {
+			printDigit(expressionField, ".");
 		});
 
-		bAdd.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				add(expressionField, resultField);
-			}
-
+		bAdd.addActionListener((ActionEvent e) -> {
+			add(expressionField, resultField);
 		});
 
-		bSubtract.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				subtract(expressionField, resultField);
-			}
-
+		bSubtract.addActionListener((ActionEvent e) -> {
+			subtract(expressionField, resultField);
 		});
 
-		bMultiply.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				multiply(expressionField, resultField);
-			}
-
+		bMultiply.addActionListener((ActionEvent e) -> {
+			multiply(expressionField, resultField);
 		});
 
-		bDivide.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				divide(expressionField, resultField);
-			}
-
+		bDivide.addActionListener((ActionEvent e) -> {
+			divide(expressionField, resultField);
 		});
 
-		bPercent.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				calculatePercentage(expressionField, resultField);
-			}
-
+		bPercent.addActionListener((ActionEvent e) -> {
+			calculatePercentage(expressionField, resultField);
 		});
 
-		bSecondPower.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				raiseToSecondPower(expressionField, resultField);
-			}
-
+		bSecondPower.addActionListener((ActionEvent e) -> {
+			raiseToSecondPower(expressionField, resultField);
 		});
 
-		bSquareRoot.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				sqrt(expressionField, resultField);
-
-			}
-
+		bSquareRoot.addActionListener((ActionEvent e) -> {
+			sqrt(expressionField, resultField);
 		});
 
-		bLogarithm.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				log(expressionField, resultField);
-			}
-
+		bLogarithm.addActionListener((ActionEvent e) -> {
+			log(expressionField, resultField);
 		});
 
-		bFactorial.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				calculateFactorial(expressionField, resultField);
-			}
-
+		bFactorial.addActionListener((ActionEvent e) -> {
+			calculateFactorial(expressionField, resultField);
 		});
 
-		bBackspace.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (expression.charAt(expression.length() - 1) == ' ') {
-					expression = "";
-					expressionField.setText(expression);
-					result = "";
-					resultField.setText(result);
-				} else {
-					expression = expression.substring(0, expression.length() - 1);
-					expressionField.setText(expression);
-				}
-
-			}
-		});
-
-		bCancel.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
+		bBackspace.addActionListener((ActionEvent e) -> {
+			if (expression.charAt(expression.length() - 1) == ' ') {
 				expression = "";
 				expressionField.setText(expression);
 				result = "";
 				resultField.setText(result);
+			} else {
+				expression = expression.substring(0, expression.length() - 1);
+				expressionField.setText(expression);
 			}
-
 		});
 
-		bEquals.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				calculate(expressionField, resultField);
-			}
-
+		bCancel.addActionListener((ActionEvent e) -> {
+			expression = "";
+			expressionField.setText(expression);
+			result = "";
+			resultField.setText(result);
 		});
 
+		bEquals.addActionListener((ActionEvent e) -> {
+			calculate(expressionField, resultField);
+		});
+
+	}
+
+	private static void printDigit(JTextField expressionField, String digit) {
+		expression += digit;
+		expressionField.setText(expression);
 	}
 
 	/**
@@ -585,61 +297,24 @@ public class EZCalculator {
 	 * @param resultField     - contains the result
 	 */
 	private static void add(JTextField expressionField, JTextField resultField) {
-		if (result == "" && expressionField.getText().indexOf(" ") == -1) {
+		if (noCalculationYet()) {
 			if (expressionField.getText() == "") {
-				// This block is performed if the calculator is empty.
-				expression = " + ";
-				expressionField.setText(expression);
+				addBasicOperator(expressionField, "+");
 				resultNumber = 0;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				showResult(resultField);
 			} else {
-				// This block is performed if only one number is present in the expression field
-				// of the calculator and
-				// the 'equals' button is not used yet.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expression = expressionField.getText();
-				expression = expression + " + ";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				addFirstOperatorInExpression(expressionField, resultField, "+");
 			}
 		} else {
-			if (Character.isDigit(expression.charAt(expression.length() - 1)) && expression.indexOf(" ") == -1) {
-				// This block is performed when the 'equals' button is already used at least
-				// once and
-				// if only one number is present in the expression field
-				// of the calculator.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expression = expressionField.getText();
-				expression = expression + " + ";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+			if (isOnlyOneNumberPresent()) {
+				addFirstOperatorInExpression(expressionField, resultField, "+");
 			} else {
-				// This block is performed if multiple numbers are entered in the calculator.
-				if (expressionField.getText().charAt(expressionField.getText().lastIndexOf(" ") - 1) == '+'
-						|| expressionField.getText().charAt(expressionField.getText().lastIndexOf(" ") - 1) == '-'
-						|| expressionField.getText().charAt(expressionField.getText().lastIndexOf(" ") - 1) == '*'
-						|| expressionField.getText().charAt(expressionField.getText().lastIndexOf(" ") - 1) == '/'
-						|| expressionField.getText().charAt(expressionField.getText().lastIndexOf(" ") - 1) == '%') {
-					// This block is performed if the preceding operator is '+', '-', '*', '/' or
-					// '%'.
-					tempExpression = result
-							+ expressionField.getText().substring(expressionField.getText().lastIndexOf(" ") - 2);
-					resultNumber = doBasicMath(tempExpression);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
+				if (isPrecedingMathFunctionSimple()) {
+					doPrecedingSimpleMathFunction(expressionField, resultField);
 					expression = expressionField.getText();
-					expression = expression + " + ";
-					expressionField.setText(expression);
+					addBasicOperator(expressionField, "+");
 				} else {
-					// This block is performed if the preceding operator is different from '+', '-',
-					// '*', '/' or '%'.
-					expression = expression + " + ";
-					expressionField.setText(expression);
+					addBasicOperator(expressionField, "+");
 				}
 			}
 
@@ -658,58 +333,23 @@ public class EZCalculator {
 	 * @param resultField     - contains the result
 	 */
 	private static void subtract(JTextField expressionField, JTextField resultField) {
-		if (result == "" && expression.indexOf(" ") == -1) {
+		if (noCalculationYet()) {
 			if (expression == "") {
-				// This block is performed if the calculator is empty.
 				resultNumber = 0;
-				expression = "-";
-				expressionField.setText(expression);
+				addBasicOperator(expressionField, "-");
 			} else {
-				// This block is performed if only one number is present in the expression field
-				// of the calculator and
-				// the 'equals' button is not used yet.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expression = expression + " - ";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				addFirstOperatorInExpression(expressionField, resultField, "-");
 			}
 
 		} else {
-			if (Character.isDigit(expression.charAt(expression.length() - 1)) && expression.indexOf(" ") == -1) {
-				// This block is performed when the 'equals' button is already used at least
-				// once and
-				// if only one number is present in the expression field
-				// of the calculator.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expression = expression + " - ";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+			if (isOnlyOneNumberPresent()) {
+				addFirstOperatorInExpression(expressionField, resultField, "-");
 			} else {
-				// This block is performed if multiple numbers are entered in the calculator.
-				if (expression.charAt(expression.lastIndexOf(" ") - 1) == '+'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '-'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '*'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '/'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '%') {
-					// This block is performed if the preceding operator is '+', '-', '*', '/' or
-					// '%'.
-					tempExpression = result
-							+ expressionField.getText().substring(expressionField.getText().lastIndexOf(" ") - 2);
-					resultNumber = doBasicMath(tempExpression);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
-
-					expression = expression + " - ";
-					expressionField.setText(expression);
+				if (isPrecedingMathFunctionSimple()) {
+					doPrecedingSimpleMathFunction(expressionField, resultField);
+					addBasicOperator(expressionField, "-");
 				} else {
-					// This block is performed if the preceding operator is different from '+', '-',
-					// '*', '/' or '%'.
-					expression = expression + " - ";
-					expressionField.setText(expression);
+					addBasicOperator(expressionField, "-");
 				}
 			}
 
@@ -728,59 +368,23 @@ public class EZCalculator {
 	 * @param resultField     - contains the result
 	 */
 	private static void multiply(JTextField expressionField, JTextField resultField) {
-		if (result == "" && expression.indexOf(" ") == -1) {
+		if (noCalculationYet()) {
 			if (expression == "") {
-				// This block is performed if the calculator is empty.
-				expression = " * ";
-				expressionField.setText(expression);
+				addBasicOperator(expressionField, "*");
 				resultNumber = 0;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				showResult(resultField);
 			} else {
-				// This block is performed if only one number is present in the expression field
-				// of the calculator and
-				// the 'equals' button is not used yet.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expression = expression + " * ";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				addFirstOperatorInExpression(expressionField, resultField, "*");
 			}
 		} else {
-			if (Character.isDigit(expression.charAt(expression.length() - 1)) && expression.indexOf(" ") == -1) {
-				// This block is performed when the 'equals' button is already used at least
-				// once and
-				// if only one number is present in the expression field
-				// of the calculator.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expression = expression + " * ";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+			if (isOnlyOneNumberPresent()) {
+				addFirstOperatorInExpression(expressionField, resultField, "*");
 			} else {
-				// This block is performed if multiple numbers are entered in the calculator.
-				if (expression.charAt(expression.lastIndexOf(" ") - 1) == '+'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '-'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '*'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '/'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '%') {
-					// This block is performed if the preceding operator is '+', '-', '*', '/' or
-					// '%'.
-					tempExpression = result
-							+ expressionField.getText().substring(expressionField.getText().lastIndexOf(" ") - 2);
-					resultNumber = doBasicMath(tempExpression);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
-
-					expression = expression + " * ";
-					expressionField.setText(expression);
+				if (isPrecedingMathFunctionSimple()) {
+					doPrecedingSimpleMathFunction(expressionField, resultField);
+					addBasicOperator(expressionField, "*");
 				} else {
-					// This block is performed if the preceding operator is different from '+', '-',
-					// '*', '/' or '%'.
-					expression = expression + " * ";
-					expressionField.setText(expression);
+					addBasicOperator(expressionField, "*");
 				}
 			}
 
@@ -798,59 +402,23 @@ public class EZCalculator {
 	 * @param resultField     - contains the result
 	 */
 	private static void divide(JTextField expressionField, JTextField resultField) {
-		if (result == "" && expression.indexOf(" ") == -1) {
+		if (noCalculationYet()) {
 			if (expression == "") {
-				// This block is performed if the calculator is empty.
-				expression = " / ";
-				expressionField.setText(expression);
+				addBasicOperator(expressionField, "/");
 				resultNumber = 0;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				showResult(resultField);
 			} else {
-				// This block is performed if only one number is present in the expression field
-				// of the calculator and
-				// the 'equals' button is not used yet.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expression = expression + " / ";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				addFirstOperatorInExpression(expressionField, resultField, "/");
 			}
 		} else {
-			if (Character.isDigit(expression.charAt(expression.length() - 1)) && expression.indexOf(" ") == -1) {
-				// This block is performed when the 'equals' button is already used at least
-				// once and
-				// if only one number is present in the expression field
-				// of the calculator.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expression = expression + " / ";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+			if (isOnlyOneNumberPresent()) {
+				addFirstOperatorInExpression(expressionField, resultField, "/");
 			} else {
-				// This block is performed if multiple numbers are entered in the calculator.
-				if (expression.charAt(expression.lastIndexOf(" ") - 1) == '+'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '-'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '*'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '/'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '%') {
-					// This block is performed if the preceding operator is '+', '-', '*', '/' or
-					// '%'.
-					tempExpression = result
-							+ expressionField.getText().substring(expressionField.getText().lastIndexOf(" ") - 2);
-					resultNumber = doBasicMath(tempExpression);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
-
-					expression = expression + " / ";
-					expressionField.setText(expression);
+				if (isPrecedingMathFunctionSimple()) {
+					doPrecedingSimpleMathFunction(expressionField, resultField);
+					addBasicOperator(expressionField, "/");
 				} else {
-					// This block is performed if the preceding operator is different from '+', '-',
-					// '*', '/' or '%'.
-					expression = expression + " / ";
-					expressionField.setText(expression);
+					addBasicOperator(expressionField, "/");
 				}
 			}
 
@@ -870,59 +438,23 @@ public class EZCalculator {
 	 * @param resultField     - contains the result
 	 */
 	private static void calculatePercentage(JTextField expressionField, JTextField resultField) {
-		if (result == "" && expression.indexOf(" ") == -1) {
+		if (noCalculationYet()) {
 			if (expression == "") {
-				// This block is performed if the calculator is empty.
-				expression = " % ";
-				expressionField.setText(expression);
+				addBasicOperator(expressionField, "%");
 				resultNumber = 0;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				showResult(resultField);
 			} else {
-				// This block is performed if only one number is present in the expression field
-				// of the calculator and
-				// the 'equals' button is not used yet.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expression = expression + " % ";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				addFirstOperatorInExpression(expressionField, resultField, "%");
 			}
 		} else {
-			if (Character.isDigit(expression.charAt(expression.length() - 1)) && expression.indexOf(" ") == -1) {
-				// This block is performed when the 'equals' button is already used at least
-				// once and
-				// if only one number is present in the expression field
-				// of the calculator.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expression = expression + " % ";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+			if (isOnlyOneNumberPresent()) {
+				addFirstOperatorInExpression(expressionField, resultField, "%");
 			} else {
-				// This block is performed if multiple numbers are entered in the calculator.
-				if (expression.charAt(expression.lastIndexOf(" ") - 1) == '+'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '-'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '*'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '/'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '%') {
-					// This block is performed if the preceding operator is '+', '-', '*', '/' or
-					// '%'.
-					tempExpression = result
-							+ expressionField.getText().substring(expressionField.getText().lastIndexOf(" ") - 2);
-					resultNumber = doBasicMath(tempExpression);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
-
-					expression = expression + " % ";
-					expressionField.setText(expression);
+				if (isPrecedingMathFunctionSimple()) {
+					doPrecedingSimpleMathFunction(expressionField, resultField);
+					addBasicOperator(expressionField, "%");
 				} else {
-					// This block is performed if the preceding operator is different from '+', '-',
-					// '*', '/' or '%'.
-					expression = expression + " % ";
-					expressionField.setText(expression);
+					addBasicOperator(expressionField, "%");
 				}
 			}
 
@@ -942,68 +474,35 @@ public class EZCalculator {
 	 * @param resultField     - contains the result
 	 */
 	private static void raiseToSecondPower(JTextField expressionField, JTextField resultField) {
-		if (result == "" && expression.indexOf(" ") == -1) {
+		if (noCalculationYet()) {
 			if (expression == "") {
-				// This block is performed if the calculator is empty.
 				resultNumber = 0;
 				expression = "( 0 )\u00B2";
 				expressionField.setText(expression);
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				showResult(resultField);
 			} else {
-				// This block is performed if only one number is present in the expression field
-				// of the calculator and
-				// the 'equals' button is not used yet.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expressionNumber = expressionNumber * expressionNumber;
-				expression = "( " + expression + " )\u00B2";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				resultNumber = Double.parseDouble(expressionField.getText())
+						* Double.parseDouble(expressionField.getText());
+				addAdvancedOperator(expressionField, "( ", " )\u00B2");
+				showResult(resultField);
 			}
 		} else {
-			if (Character.isDigit(expression.charAt(expression.length() - 1)) && expression.indexOf(" ") == -1) {
-				// This block is performed when the 'equals' button is already used at least
-				// once and
-				// if only one number is present in the expression field
-				// of the calculator.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expressionNumber = expressionNumber * expressionNumber;
-				expression = "( " + expression + " )\u00B2";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+			if (isOnlyOneNumberPresent()) {
+				resultNumber = Double.parseDouble(expressionField.getText())
+						* Double.parseDouble(expressionField.getText());
+				addAdvancedOperator(expressionField, "( ", " )\u00B2");
+				showResult(resultField);
 			} else {
-				// This block is performed if multiple numbers are entered in the calculator.
-				if (expression.charAt(expression.lastIndexOf(" ") - 1) == '+'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '-'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '*'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '/'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '%') {
-					// This block is performed if the preceding operator is '+', '-', '*', '/' or
-					// '%'.
-					tempExpression = result
-							+ expressionField.getText().substring(expressionField.getText().lastIndexOf(" ") - 2);
-					resultNumber = doBasicMath(tempExpression);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
-
-					expression = "( " + expression + " )\u00B2";
-					expressionField.setText(expression);
+				if (isPrecedingMathFunctionSimple()) {
+					doPrecedingSimpleMathFunction(expressionField, resultField);
+					addAdvancedOperator(expressionField, "( ", " )\u00B2");
 					resultNumber = resultNumber * resultNumber;
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
+					showResult(resultField);
 
 				} else {
-					// This block is performed if the preceding operator is different from '+', '-',
-					// '*', '/' or '%'.
-					expression = "( " + expression + " )\u00B2";
-					expressionField.setText(expression);
+					addAdvancedOperator(expressionField, "( ", " )\u00B2");
 					resultNumber = resultNumber * resultNumber;
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
+					showResult(resultField);
 				}
 			}
 
@@ -1022,68 +521,32 @@ public class EZCalculator {
 	 * @param resultField     - contains the result
 	 */
 	private static void sqrt(JTextField expressionField, JTextField resultField) {
-		if (result == "" && expression.indexOf(" ") == -1) {
+		if (noCalculationYet()) {
 			if (expression == "") {
-				// This block is performed if the calculator is empty.
 				resultNumber = 0;
 				expression = "\u221A( 0 )";
 				expressionField.setText(expression);
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				showResult(resultField);
 			} else {
-				// This block is performed if only one number is present in the expression field
-				// of the calculator and
-				// the 'equals' button is not used yet.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expressionNumber = Math.sqrt(expressionNumber);
-				expression = "\u221A( " + expression + " )";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				resultNumber = Math.sqrt(Double.parseDouble(expressionField.getText()));
+				addAdvancedOperator(expressionField, "\u221A( ", " )");
+				showResult(resultField);
 			}
 		} else {
-			if (Character.isDigit(expression.charAt(expression.length() - 1)) && expression.indexOf(" ") == -1) {
-				// This block is performed when the 'equals' button is already used at least
-				// once and
-				// if only one number is present in the expression field
-				// of the calculator.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expressionNumber = Math.sqrt(expressionNumber);
-				expression = "\u221A( " + expression + " )";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+			if (isOnlyOneNumberPresent()) {
+				resultNumber = Math.sqrt(Double.parseDouble(expressionField.getText()));
+				addAdvancedOperator(expressionField, "\u221A( ", " )");
+				showResult(resultField);
 			} else {
-				// This block is performed if multiple numbers are entered in the calculator.
-				if (expression.charAt(expression.lastIndexOf(" ") - 1) == '+'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '-'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '*'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '/'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '%') {
-					// This block is performed if the preceding operator is '+', '-', '*', '/' or
-					// '%'.
-					tempExpression = result
-							+ expressionField.getText().substring(expressionField.getText().lastIndexOf(" ") - 2);
-					resultNumber = doBasicMath(tempExpression);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
-
-					expression = "\u221A( " + expression + " )";
-					expressionField.setText(expression);
+				if (isPrecedingMathFunctionSimple()) {
+					doPrecedingSimpleMathFunction(expressionField, resultField);
+					addAdvancedOperator(expressionField, "\u221A( ", " )");
 					resultNumber = Math.sqrt(resultNumber);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
-
+					showResult(resultField);
 				} else {
-					// This block is performed if the preceding operator is different from '+', '-',
-					// '*', '/' or '%'.
-					expression = "\u221A( " + expression + " )";
-					expressionField.setText(expression);
+					addAdvancedOperator(expressionField, "\u221A( ", " )");
 					resultNumber = Math.sqrt(resultNumber);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
+					showResult(resultField);
 				}
 			}
 
@@ -1103,69 +566,34 @@ public class EZCalculator {
 	 * @param resultField     - contains the result
 	 */
 	private static void log(JTextField expressionField, JTextField resultField) {
-		if (result == "" && expression.indexOf(" ") == -1) {
+		if (noCalculationYet()) {
 			if (expression == "") {
-				// This block is performed if the calculator is empty.
 				resultNumber = 0;
 				expression = "log( 0 )";
 				expressionField.setText(expression);
 				resultNumber = Math.log(resultNumber);
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				showResult(resultField);
 			} else {
-				// This block is performed if only one number is present in the expression field
-				// of the calculator and
-				// the 'equals' button is not used yet.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expressionNumber = Math.log(expressionNumber);
-				expression = "log( " + expression + " )";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				resultNumber = Math.log(Double.parseDouble(expressionField.getText()));
+				addAdvancedOperator(expressionField, "log( ", " )");
+				showResult(resultField);
 			}
 		} else {
-			if (Character.isDigit(expression.charAt(expression.length() - 1)) && expression.indexOf(" ") == -1) {
-				// This block is performed when the 'equals' button is already used at least
-				// once and
-				// if only one number is present in the expression field
-				// of the calculator.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expressionNumber = Math.log(expressionNumber);
-				expression = "log( " + expression + " )";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+			if (isOnlyOneNumberPresent()) {
+				resultNumber = Math.log(Double.parseDouble(expressionField.getText()));
+				addAdvancedOperator(expressionField, "log( ", " )");
+				showResult(resultField);
 			} else {
-				// This block is performed if multiple numbers are entered in the calculator.
-				if (expression.charAt(expression.lastIndexOf(" ") - 1) == '+'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '-'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '*'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '/'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '%') {
-					// This block is performed if the preceding operator is '+', '-', '*', '/' or
-					// '%'.
-					tempExpression = result
-							+ expressionField.getText().substring(expressionField.getText().lastIndexOf(" ") - 2);
-					resultNumber = doBasicMath(tempExpression);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
-
-					expression = "log( " + expression + " )";
-					expressionField.setText(expression);
+				if (isPrecedingMathFunctionSimple()) {
+					doPrecedingSimpleMathFunction(expressionField, resultField);
+					addAdvancedOperator(expressionField, "log( ", " )");
 					resultNumber = Math.log(resultNumber);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
+					showResult(resultField);
 
 				} else {
-					// This block is performed if the preceding operator is different from '+', '-',
-					// '*', '/' or '%'.
-					expression = "log( " + expression + " )";
-					expressionField.setText(expression);
+					addAdvancedOperator(expressionField, "log( ", " )");
 					resultNumber = Math.log(resultNumber);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
+					showResult(resultField);
 				}
 			}
 
@@ -1185,68 +613,33 @@ public class EZCalculator {
 	 * @param resultField     - contains the result
 	 */
 	private static void calculateFactorial(JTextField expressionField, JTextField resultField) {
-		if (result == "" && expression.indexOf(" ") == -1) {
+		if (noCalculationYet()) {
 			if (expression == "") {
-				// This block is performed if the calculator is empty.
 				resultNumber = 1;
 				expression = "( 0 )!";
 				expressionField.setText(expression);
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				showResult(resultField);
 			} else {
-				// This block is performed if only one number is present in the expression field
-				// of the calculator and
-				// the 'equals' button is not used yet.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expressionNumber = factorial(expressionNumber);
-				expression = "( " + expression + " )!";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				resultNumber = factorial(Double.parseDouble(expressionField.getText()));
+				addAdvancedOperator(expressionField, "( ", " )!");
+				showResult(resultField);
 			}
 		} else {
-			// This block is performed if multiple numbers are entered in the calculator.
-			if (Character.isDigit(expression.charAt(expression.length() - 1)) && expression.indexOf(" ") == -1) {
-				// This block is performed when the 'equals' button is already used at least
-				// once and
-				// if only one number is present in the expression field
-				// of the calculator.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				expressionNumber = factorial(expressionNumber);
-				expression = "( " + expression + " )!";
-				expressionField.setText(expression);
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+			if (isOnlyOneNumberPresent()) {
+				resultNumber = factorial(Double.parseDouble(expressionField.getText()));
+				addAdvancedOperator(expressionField, "( ", " )!");
+				showResult(resultField);
 			} else {
-				if (expression.charAt(expression.lastIndexOf(" ") - 1) == '+'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '-'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '*'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '/'
-						|| expression.charAt(expression.lastIndexOf(" ") - 1) == '%') {
-					// This block is performed if the preceding operator is '+', '-', '*', '/' or
-					// '%'.
-					tempExpression = result
-							+ expressionField.getText().substring(expressionField.getText().lastIndexOf(" ") - 2);
-					resultNumber = doBasicMath(tempExpression);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
-
-					expression = "( " + expression + " )!";
-					expressionField.setText(expression);
+				if (isPrecedingMathFunctionSimple()) {
+					doPrecedingSimpleMathFunction(expressionField, resultField);
+					addAdvancedOperator(expressionField, "( ", " )!");
 					resultNumber = factorial(resultNumber);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
+					showResult(resultField);
 
 				} else {
-					// This block is performed if the preceding operator is different from '+', '-',
-					// '*', '/' or '%'.
-					expression = "( " + expression + " )!";
-					expressionField.setText(expression);
+					addAdvancedOperator(expressionField, "( ", " )!");
 					resultNumber = factorial(resultNumber);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
+					showResult(resultField);
 				}
 			}
 
@@ -1265,55 +658,27 @@ public class EZCalculator {
 	 * @param resultField     - contains the result
 	 */
 	private static void calculate(JTextField expressionField, JTextField resultField) {
-		if (result == "" && expression.indexOf(" ") == -1) {
+		if (noCalculationYet()) {
 			if (expression == "") {
-				// This block is performed if the calculator is empty.
 				resultNumber = 0;
 				expression = "0";
 				expressionField.setText(expression);
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				showResult(resultField);
 			} else {
-				// This block is performed if only one number is present in the expression field
-				// of the calculator and
-				// the 'equals' button is not used yet.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+				resultNumber = Double.parseDouble(expressionField.getText());
+				showResult(resultField);
 			}
 		} else {
-			if (Character.isDigit(expression.charAt(expression.length() - 1)) && expression.indexOf(" ") == -1) {
-				// This block is performed when the 'equals' button is already used at least
-				// once and
-				// if only one number is present in the expression field
-				// of the calculator.
-				double expressionNumber = Double.parseDouble(expressionField.getText());
-				resultNumber = expressionNumber;
-				result = Double.toString(resultNumber);
-				resultField.setText(result);
+			if (isOnlyOneNumberPresent()) {
+				resultNumber = Double.parseDouble(expressionField.getText());
+				showResult(resultField);
 			} else {
-				// This block is performed if multiple numbers are entered in the calculator.
-				if (Character.isDigit(expression.charAt(expression.length() - 1))
-						&& (expression.charAt(expression.lastIndexOf(" ") - 1) == '+'
-								|| expression.charAt(expression.lastIndexOf(" ") - 1) == '-'
-								|| expression.charAt(expression.lastIndexOf(" ") - 1) == '*'
-								|| expression.charAt(expression.lastIndexOf(" ") - 1) == '/'
-								|| expression.charAt(expression.lastIndexOf(" ") - 1) == '%')) {
-					// This block is performed if the preceding operator is '+', '-', '*', '/' or
-					// '%'.
-					tempExpression = result
-							+ expressionField.getText().substring(expressionField.getText().lastIndexOf(" ") - 2);
-					resultNumber = doBasicMath(tempExpression);
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
+				if (areMultipleNumbersPresent()) {
+					doPrecedingSimpleMathFunction(expressionField, resultField);
 					expression = result;
 					expressionField.setText(expression);
 				} else {
-					// This block is performed if the preceding operator is different from '+', '-',
-					// '*', '/' or '%'.
-					result = Double.toString(resultNumber);
-					resultField.setText(result);
+					showResult(resultField);
 					expression = result;
 					expressionField.setText(expression);
 				}
@@ -1382,13 +747,93 @@ public class EZCalculator {
 		JFrame frame = new JFrame("EZ Calculator");
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		// Set up the content pane.
 		createAndAddComponentsToPane(frame.getContentPane());
-
-		// Display the window.
 		frame.pack();
 		frame.setVisible(true);
+	}
+
+	private static void showResult(JTextField resultField) {
+		result = Double.toString(resultNumber);
+		resultField.setText(result);
+	}
+
+	// Add "+", "-", "*", "/" or "%"
+	private static void addBasicOperator(JTextField expressionField, String operator) {
+		expression += " " + operator + " ";
+		expressionField.setText(expression);
+	}
+
+	// Add signs representing math function like second power, square root,
+	// logarithm and factorial.
+	private static void addAdvancedOperator(JTextField expressionField, String firstPart, String secondPart) {
+		expression = firstPart + expression + secondPart;
+		expressionField.setText(expression);
+	}
+
+	private static void doPrecedingSimpleMathFunction(JTextField expressionField, JTextField resultField) {
+		tempExpression = result + expressionField.getText().substring(expressionField.getText().lastIndexOf(" ") - 2);
+		resultNumber = doBasicMath(tempExpression);
+		showResult(resultField);
+	}
+
+	// This method checks if the preceding operator is '+', '-', '*', '/' or '%'.
+	private static boolean isPrecedingMathFunctionSimple() {
+		return expression.charAt(expression.lastIndexOf(" ") - 1) == '+'
+				|| expression.charAt(expression.lastIndexOf(" ") - 1) == '-'
+				|| expression.charAt(expression.lastIndexOf(" ") - 1) == '*'
+				|| expression.charAt(expression.lastIndexOf(" ") - 1) == '/'
+				|| expression.charAt(expression.lastIndexOf(" ") - 1) == '%';
+	}
+
+	private static boolean isLastEntryANumber() {
+
+		return Character.isDigit(expression.charAt(expression.length() - 1));
+	}
+
+	private static boolean areMultipleNumbersPresent() {
+		return isLastEntryANumber() && isPrecedingMathFunctionSimple();
+
+	}
+
+	private static boolean isOnlyOneNumberPresent() {
+		return isLastEntryANumber() && expression.indexOf(" ") == -1;
+	}
+
+	private static boolean noCalculationYet() {
+		return result == "" && expression.indexOf(" ") == -1;
+	}
+
+	private static void addFirstOperatorInExpression(JTextField expressionField, JTextField resultField,
+			String operator) {
+		double expressionNumber = Double.parseDouble(expressionField.getText());
+		expression = expression + " " + operator + " ";
+		expressionField.setText(expression);
+		resultNumber = expressionNumber;
+		showResult(resultField);
+	}
+
+	private static void positionButton(Container pane, JButton b, GridBagConstraints gbc, int ipadx, int ipady,
+			double weightx, Insets insets, int gridx, int gridy) {
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.ipadx = ipadx;
+		gbc.ipady = ipady;
+		gbc.weightx = weightx;
+		gbc.insets = insets;
+		gbc.gridx = gridx;
+		gbc.gridy = gridy;
+		pane.add(b, gbc);
+	}
+
+	private static void positionTextField(Container pane, JTextField tf, GridBagConstraints gbc, int ipadx, int ipady,
+			double weightx, Insets insets, int gridx, int gridy) {
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.ipadx = ipadx;
+		gbc.ipady = ipady;
+		gbc.weightx = weightx;
+		gbc.insets = insets;
+		gbc.gridx = gridx;
+		gbc.gridy = gridy;
+		pane.add(tf, gbc);
 	}
 
 	public static void main(String[] args) {
