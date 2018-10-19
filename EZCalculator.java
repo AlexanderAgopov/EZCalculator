@@ -1,7 +1,6 @@
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
@@ -17,18 +16,13 @@ import javax.swing.JTextField;
  * @author a
  *
  */
-@SuppressWarnings("PMD.CyclomaticComplexity")
+
 public class EZCalculator {
 
 	private static String expression = "";
 	private static String tempExpression = "";
 	private static String result = "";
 	private static double resultNumber = 0;
-
-	// Constructor
-	public EZCalculator() {
-		createAndShowGUI();
-	}
 
 	/**
 	 * Create and add all components to pane.
@@ -46,134 +40,99 @@ public class EZCalculator {
 		Insets insetsRight = new Insets(2, 2, 2, 4);
 		Insets insetsBottom = new Insets(2, 2, 4, 2);
 
-		Font expressionFont = new Font(Font.SANS_SERIF, Font.PLAIN, 15);
-		Font resultFont = new Font(Font.SANS_SERIF, Font.BOLD, 22);
-
 		// Create text fields and position them on the top of the frame
-		GridBagConstraints cF1 = new GridBagConstraints();
 		JTextField expressionField = new JTextField();
-		expressionField.setFont(expressionFont);
+		expressionField.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 15));
 		expressionField.setDisabledTextColor(Color.black);
 
 		expressionField.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
-
-				char c = e.getKeyChar();
-				if ((c < '0') || (c > '9')) { // (c < '*') if we want to use '+', '-', '*' and '/'
+				if ((e.getKeyChar() < '0') || (e.getKeyChar() > '9')) { // (c < '*') allows usage of '+', '-', '*','/'
 					e.consume(); // ignore event
 				}
-
 			}
 		});
-		cF1.gridwidth = 6;
-		positionTextField(pane, expressionField, cF1, 0, 20, 0.0, new Insets(6, 4, 4, 2), 0, 0);
+		positionTextField(pane, expressionField, new GridBagConstraints(), 6, 0, 20, 0.0, new Insets(6, 4, 4, 2), 0, 0);
 
-		GridBagConstraints cF2 = new GridBagConstraints();
 		JTextField resultField = new JTextField();
-		resultField.setFont(resultFont);
+		resultField.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 22));
 		resultField.setDisabledTextColor(Color.BLACK);
 		resultField.addKeyListener(new KeyAdapter() {
 			public void keyTyped(KeyEvent e) {
-				char c = e.getKeyChar();
 				e.consume(); // ignore event
 			}
 		});
-		cF2.gridwidth = 6;
-		positionTextField(pane, resultField, cF2, 0, 20, 0.0, new Insets(2, 4, 4, 2), 0, 1);
+		positionTextField(pane, resultField, new GridBagConstraints(), 6, 0, 20, 0.0, new Insets(2, 4, 4, 2), 0, 1);
 
 		// Create all buttons and position them in the frame
-		GridBagConstraints cB7 = new GridBagConstraints();
 		JButton b7 = new JButton("7");
-		positionButton(pane, b7, cB7, 10, 10, 0.5, insetsLeft, 0, 2);
+		positionButton(pane, b7, new GridBagConstraints(), 1, 10, 10, 0.5, insetsLeft, 0, 2);
 
-		GridBagConstraints cB8 = new GridBagConstraints();
 		JButton b8 = new JButton("8");
-		positionButton(pane, b8, cB8, 10, 10, 0.5, insetsMiddle, 1, 2);
+		positionButton(pane, b8, new GridBagConstraints(), 1, 10, 10, 0.5, insetsMiddle, 1, 2);
 
-		GridBagConstraints cB9 = new GridBagConstraints();
 		JButton b9 = new JButton("9");
-		positionButton(pane, b9, cB9, 10, 10, 0.5, insetsMiddle, 2, 2);
+		positionButton(pane, b9, new GridBagConstraints(), 1, 10, 10, 0.5, insetsMiddle, 2, 2);
 
-		GridBagConstraints cBDivide = new GridBagConstraints();
 		JButton bDivide = new JButton("/");
-		positionButton(pane, bDivide, cBDivide, 15, 10, 0.5, insetsMiddle, 3, 2);
+		positionButton(pane, bDivide, new GridBagConstraints(), 1, 15, 10, 0.5, insetsMiddle, 3, 2);
 
-		GridBagConstraints cBBackspace = new GridBagConstraints();
 		JButton bBackspace = new JButton("\u2b05");
-		positionButton(pane, bBackspace, cBBackspace, 0, 10, 0.5, insetsMiddle, 4, 2);
+		positionButton(pane, bBackspace, new GridBagConstraints(), 1, 0, 10, 0.5, insetsMiddle, 4, 2);
 
-		GridBagConstraints cBCancel = new GridBagConstraints();
 		JButton bCancel = new JButton("C");
-		positionButton(pane, bCancel, cBCancel, 10, 10, 0.5, insetsRight, 5, 2);
+		positionButton(pane, bCancel, new GridBagConstraints(), 1, 10, 10, 0.5, insetsRight, 5, 2);
 
-		GridBagConstraints cB4 = new GridBagConstraints();
 		JButton b4 = new JButton("4");
-		positionButton(pane, b4, cB4, 10, 10, 0.5, insetsLeft, 0, 3);
+		positionButton(pane, b4, new GridBagConstraints(), 1, 10, 10, 0.5, insetsLeft, 0, 3);
 
-		GridBagConstraints cB5 = new GridBagConstraints();
 		JButton b5 = new JButton("5");
-		positionButton(pane, b5, cB5, 10, 10, 0.5, insetsMiddle, 1, 3);
+		positionButton(pane, b5, new GridBagConstraints(), 1, 10, 10, 0.5, insetsMiddle, 1, 3);
 
-		GridBagConstraints cB6 = new GridBagConstraints();
 		JButton b6 = new JButton("6");
-		positionButton(pane, b6, cB6, 10, 10, 0.5, insetsMiddle, 2, 3);
+		positionButton(pane, b6, new GridBagConstraints(), 1, 10, 10, 0.5, insetsMiddle, 2, 3);
 
-		GridBagConstraints cBMultiply = new GridBagConstraints();
 		JButton bMultiply = new JButton("*");
-		positionButton(pane, bMultiply, cBMultiply, 0, 10, 0.5, insetsMiddle, 3, 3);
+		positionButton(pane, bMultiply, new GridBagConstraints(), 1, 0, 10, 0.5, insetsMiddle, 3, 3);
 
-		GridBagConstraints cBFactorial = new GridBagConstraints();
 		JButton bFactorial = new JButton("n!");
-		positionButton(pane, bFactorial, cBFactorial, 0, 10, 0.5, insetsMiddle, 4, 3);
+		positionButton(pane, bFactorial, new GridBagConstraints(), 1, 0, 10, 0.5, insetsMiddle, 4, 3);
 
-		GridBagConstraints cBLogarithm = new GridBagConstraints();
 		JButton bLogarithm = new JButton("log");
-		positionButton(pane, bLogarithm, cBLogarithm, 0, 10, 0.5, insetsRight, 5, 3);
+		positionButton(pane, bLogarithm, new GridBagConstraints(), 1, 0, 10, 0.5, insetsRight, 5, 3);
 
-		GridBagConstraints cB1 = new GridBagConstraints();
 		JButton b1 = new JButton("1");
-		positionButton(pane, b1, cB1, 10, 10, 0.5, insetsLeft, 0, 4);
+		positionButton(pane, b1, new GridBagConstraints(), 1, 10, 10, 0.5, insetsLeft, 0, 4);
 
-		GridBagConstraints cB2 = new GridBagConstraints();
 		JButton b2 = new JButton("2");
-		positionButton(pane, b2, cB2, 10, 10, 0.5, insetsMiddle, 1, 4);
+		positionButton(pane, b2, new GridBagConstraints(), 1, 10, 10, 0.5, insetsMiddle, 1, 4);
 
-		GridBagConstraints cB3 = new GridBagConstraints();
 		JButton b3 = new JButton("3");
-		positionButton(pane, b3, cB3, 10, 10, 0.5, insetsMiddle, 2, 4);
+		positionButton(pane, b3, new GridBagConstraints(), 1, 10, 10, 0.5, insetsMiddle, 2, 4);
 
-		GridBagConstraints cbSubtract = new GridBagConstraints();
 		JButton bSubtract = new JButton("-");
-		positionButton(pane, bSubtract, cbSubtract, 10, 10, 0.5, insetsMiddle, 3, 4);
+		positionButton(pane, bSubtract, new GridBagConstraints(), 1, 10, 10, 0.5, insetsMiddle, 3, 4);
 
-		GridBagConstraints cbSecondPower = new GridBagConstraints();
 		JButton bSecondPower = new JButton("x\u00B2");
-		positionButton(pane, bSecondPower, cbSecondPower, 0, 10, 0.5, insetsMiddle, 4, 4);
+		positionButton(pane, bSecondPower, new GridBagConstraints(), 1, 0, 10, 0.5, insetsMiddle, 4, 4);
 
-		GridBagConstraints cBSquareRoot = new GridBagConstraints();
 		JButton bSquareRoot = new JButton("\u221A");
-		positionButton(pane, bSquareRoot, cBSquareRoot, 0, 10, 0.5, insetsRight, 5, 4);
+		positionButton(pane, bSquareRoot, new GridBagConstraints(), 1, 0, 10, 0.5, insetsRight, 5, 4);
 
-		GridBagConstraints cB0 = new GridBagConstraints();
 		JButton b0 = new JButton("0");
-		positionButton(pane, b0, cB0, 10, 10, 0.5, new Insets(2, 4, 4, 2), 0, 5);
+		positionButton(pane, b0, new GridBagConstraints(), 1, 10, 10, 0.5, new Insets(2, 4, 4, 2), 0, 5);
 
-		GridBagConstraints cBDot = new GridBagConstraints();
 		JButton bDot = new JButton(".");
-		positionButton(pane, bDot, cBDot, 10, 10, 0.5, insetsBottom, 1, 5);
+		positionButton(pane, bDot, new GridBagConstraints(), 1, 10, 10, 0.5, insetsBottom, 1, 5);
 
-		GridBagConstraints cBPercent = new GridBagConstraints();
 		JButton bPercent = new JButton("%");
-		positionButton(pane, bPercent, cBPercent, 10, 10, 0.5, insetsBottom, 2, 5);
+		positionButton(pane, bPercent, new GridBagConstraints(), 1, 10, 10, 0.5, insetsBottom, 2, 5);
 
-		GridBagConstraints cbAdd = new GridBagConstraints();
 		JButton bAdd = new JButton("+");
-		positionButton(pane, bAdd, cbAdd, 0, 10, 0.5, insetsBottom, 3, 5);
+		positionButton(pane, bAdd, new GridBagConstraints(), 1, 0, 10, 0.5, insetsBottom, 3, 5);
 
-		GridBagConstraints cBEquals = new GridBagConstraints();
 		JButton bEquals = new JButton("=");
-		cBEquals.gridwidth = 2;
-		positionButton(pane, bEquals, cBEquals, 0, 10, 0.5, new Insets(2, 2, 4, 4), 4, 5);
+		positionButton(pane, bEquals, new GridBagConstraints(), 2, 0, 10, 0.5, new Insets(2, 2, 4, 4), 4, 5);
 
 		// Set button operations
 		b0.addActionListener((ActionEvent e) -> {
@@ -716,7 +675,7 @@ public class EZCalculator {
 			case "%":
 				return (firstValue * secondValue) / 100;
 			default:
-				throw new RuntimeException("Unknown operator" + operator);// catch this somewhere???
+				throw new RuntimeException("Unknown operator" + operator);
 			}
 		}
 	}
@@ -763,8 +722,7 @@ public class EZCalculator {
 		expressionField.setText(expression);
 	}
 
-	// Add signs representing math function like second power, square root,
-	// logarithm and factorial.
+	// Add signs representing advanced math functions
 	private static void addAdvancedOperator(JTextField expressionField, String firstPart, String secondPart) {
 		expression = firstPart + expression + secondPart;
 		expressionField.setText(expression);
@@ -812,8 +770,9 @@ public class EZCalculator {
 		showResult(resultField);
 	}
 
-	private static void positionButton(Container pane, JButton b, GridBagConstraints gbc, int ipadx, int ipady,
-			double weightx, Insets insets, int gridx, int gridy) {
+	private static void positionButton(Container pane, JButton b, GridBagConstraints gbc, int fill, int ipadx,
+			int ipady, double weightx, Insets insets, int gridx, int gridy) {
+		gbc.gridwidth = fill;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.ipadx = ipadx;
 		gbc.ipady = ipady;
@@ -824,9 +783,10 @@ public class EZCalculator {
 		pane.add(b, gbc);
 	}
 
-	private static void positionTextField(Container pane, JTextField tf, GridBagConstraints gbc, int ipadx, int ipady,
-			double weightx, Insets insets, int gridx, int gridy) {
+	private static void positionTextField(Container pane, JTextField tf, GridBagConstraints gbc, int fill, int ipadx,
+			int ipady, double weightx, Insets insets, int gridx, int gridy) {
 		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.gridwidth = fill;
 		gbc.ipadx = ipadx;
 		gbc.ipady = ipady;
 		gbc.weightx = weightx;
