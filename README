@@ -3,11 +3,11 @@ EZCalculator is a Java GUI application which can perform the following math func
 2) subtract; 
 3) multiply; 
 4) divide; 
-5) calculate a percentage; 
+5) calculate percentage; 
 6) raise to second power; 
-7) calculate a square root;
-8) calculate a natural logarithm; 
-9) calculate a factorial.
+7) calculate square root;
+8) calculate natural logarithm; 
+9) calculate factorial.
 
 Author: A.
 
